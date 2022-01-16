@@ -21,6 +21,10 @@ Route::get('/', function () {
 });
 
 
-Route::get('gunung', [GunungController::class, 'index'])->name('gunung.index');
-Route::get('lokasi', [lokasiController::class, 'index'])->name('lokasi.index');
+Route::get('gunung', [GunungController::class, 'index'])->name('gunung');
 
+Route::get('lokasi', [lokasiController::class, 'index'])->name('lokasi');
+
+
+
+Route::get('/titik/json', [GunungController::class, 'titik']);

@@ -16,4 +16,9 @@ class PatokController extends Controller
     {
         return view('Gunung.index');
         }
+    public function patok_json()
+    {
+        $results=$this->PatokModel->allData();
+        return json_encode($results);
+    }
 }

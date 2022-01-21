@@ -202,9 +202,36 @@
         // zoom the map to the polygon
         map.fitBounds(polygon.getBounds());
 
+        polygon.on('click', (e) => {
+            alert("ini polygon");
+        });
+
+        $(document).ready(function() {
+            $.getJSON('titik/json', function(data) {
+                // alert(data);
+                // $.each(data, function($index))
+                $.each(data, function($index) {
+                    alert(data[index].nama)
+
+                    var hospital = L.icon({
+                        iconUrl: 'asset/img/maker/hospital.png',
+
+                        iconSize: [38, 48], // size of the icon
+                        shadowSize: [50, 64], // size of the shadow
+                        iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+                        shadowAnchor: [4, 62], // the same for the shadow
+                        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+                    });
+
+                   L.marker([parseFloat(data[index].longitude), parseFloat(data[index].latitude)],{icon:hospital}).addTo(map);
+                });
+            });
+        });
+
+
         // add to map
         L.marker([-8.5956624, 116.1161152], {
-            icon: hospital
+          icon: hospital
         }).addTo(map);
     </Script>
 </body>
